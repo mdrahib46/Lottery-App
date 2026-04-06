@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:loteryapp/core/contants/app_colors.dart';
-import 'package:loteryapp/core/contants/app_strings.dart';
+import 'package:loteryapp/core/constants/app_colors.dart';
+import 'package:loteryapp/core/constants/app_strings.dart';
 import 'package:loteryapp/presentation/provider/lottery_provider.dart';
+import 'package:loteryapp/presentation/screens/result_screen.dart';
 import 'package:loteryapp/presentation/widgets/gradient_scaffold.dart';
 import 'package:loteryapp/presentation/widgets/number_tile.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/gradient_elevated_button.dart';
 
 class LotteryScreen extends StatefulWidget {
   const LotteryScreen({super.key});
@@ -20,6 +23,7 @@ class _LotteryScreenState extends State<LotteryScreen> {
   Widget build(BuildContext context) {
     final provider = Provider.of<LotteryProvider>(context);
     return GradientScaffold(
+      showBackButton: true,
       title: AppStrings.homeTitle,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -80,22 +84,36 @@ class _LotteryScreenState extends State<LotteryScreen> {
                       number: number,
                       isSelected: _selectedNumber == number,
                       onTap: () {
-                        setState(()=> _selectedNumber = number);
+                        setState(() => _selectedNumber = number);
                         provider.selectedNumber(number);
                       },
                     );
                   },
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.play_arrow),
-                    const SizedBox(width: 8),
-                    Text(AppStrings.playLotteryButton),
-                  ],
+              const SizedBox(height: 20),
+
+              GradientElevatedButton(
+                buttonTitle: 'Play Lottery',
+                backgroundColor: AppColors.tileGradient,
+                foregroundColor: Colors.white,
+                onTap: () {
+                  provider.playLottery();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ResultScreen()),
+                  );
+                },
+              ),
+
+              const SizedBox(height: 20),
+
+              Text(
+                '✨ Good Luck ✨',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.white,
                 ),
               ),
             ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loteryapp/core/contants/app_colors.dart';
+import 'package:loteryapp/core/constants/app_colors.dart';
 
 class GradientScaffold extends StatelessWidget {
   const GradientScaffold({
@@ -23,6 +23,12 @@ class GradientScaffold extends StatelessWidget {
         centerTitle: true,
         automaticallyImplyLeading: showBackButton,
         backgroundColor: Colors.transparent,
+          leading: showBackButton
+              ? IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () => Navigator.pop(context),
+          )
+              : null,
         iconTheme: IconThemeData(color: AppColors.white),
         title: Text(
           title,
@@ -43,3 +49,6 @@ class GradientScaffold extends StatelessWidget {
     );
   }
 }
+
+
+//8801897070532

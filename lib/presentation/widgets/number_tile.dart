@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loteryapp/core/contants/app_colors.dart';
+import 'package:loteryapp/core/constants/app_colors.dart';
+
 
 class NumberTile extends StatelessWidget {
   const NumberTile({

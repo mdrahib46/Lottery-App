@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:loteryapp/core/contants/app_strings.dart';
+import 'package:loteryapp/core/constants/app_strings.dart';
 import 'package:loteryapp/domain/entities/lottery_result.dart';
 
 
@@ -13,7 +13,7 @@ class LotteryProvider extends ChangeNotifier {
   String? _errorMessage;
 
   int? get getSelectedNumber => _selectedNumber;
-  LotteryResult? get lotteryResult => _lotteryResult;
+  LotteryResult? get getLotteryResult => _lotteryResult;
   String? get errorMessage => _errorMessage;
 
   bool isValidNumber(int? number) {
